@@ -1,0 +1,25 @@
+<!-- SHOWS ALL REVIEWS FOR EACH BOOK -->
+
+<!-- contains layout.html file -->
+{% extends "layout.html" %}
+{% block body %}
+
+<h3>Title: {{book_info['title']}}</h3>
+<p>Author: {{book_info['name']}}</p>
+<h4>Reviews:</h4>
+{% for rev in reviews%}
+{{rev}}
+  <p>Rating: {{rev['rating']}}</p>
+  <p><a href="/users/{{rev['id']}}">{{rev['name']}}</a>says: {{rev['review']}}</p>
+  <p>Posted on {{rev['created_at']}}</p>
+  <a href="/books/{{rev['id']}}/delete">Delete this Review</a>
+{% endfor %}
+<!-- IF USER ID = :ID -->
+
+
+<form class="" action="/books/create" method="post">
+  Add a Review: <br>
+  <textarea name="add_review" rows="8" cols="40"></textarea>
+  <input type="submit" value="Add Review">
+</form>
+{% endblock %}

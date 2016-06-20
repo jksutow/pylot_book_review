@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <!-- if user is logged in, display nav bar so they can log out -->
+        {% if 'user' in session %}
+        <nav>
+          <ul class="nav nav-tabs">
+            <li role="presentation"><a href="/books/new">Home</a></li>
+            <li role="presentation"><a href="/user/logout">Logout</a></li>
+          </ul>
+        </nav>
+        {% endif %}
+      </header>
+      {% block body %} {% endblock %}
+    </div>
+
+
+  </body>
+
+  <style>
+    input {
+      display: block;
+    }
+  </style>
+</html>

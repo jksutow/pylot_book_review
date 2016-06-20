@@ -1,0 +1,35 @@
+<!-- contains layout.html file -->
+{% extends "layout.html" %}
+{% block body %}
+<div class="jumbotron">
+  <h1>Welcome to Book Reviews!</h1>
+  <p>Please login or register to review a book.</p>
+</div>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <p class='error'>{{message}}</p>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+
+<!-- login form -->
+<form action="/login" method="post">
+  Email: <input type="email" name="email">
+  Password: <input type="password" name="password">
+  <input type="submit" value="Login">
+</form>
+
+<!-- registration form -->
+<form action="/register" method="post">
+  Name: <input type="text" name="name">
+  Alias: <input type="text" name="alias">
+  Email: <input type="email" name="email">
+  Password: <input type="password" name="password">
+  Password Confirm: <input type="password" name="password_confirm">
+  <input type="submit" value="Register">
+</form>
+
+{% endblock %}

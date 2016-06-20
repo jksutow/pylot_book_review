@@ -1,0 +1,19 @@
+<!-- SHOW ALL USERS REVIEWS (LATEST 3 REVIEWS) -->
+
+<!-- contains layout.html file -->
+{% extends "layout.html" %}
+{% block body %}
+  <h2>Welcome, {{session['user']['name']}}!</h2>
+  <a href="/books/new">Add Book and Review</a> |
+  <a href="/user/logout">Logout</a>
+
+  <h4>Recent Book Reviews:</h4>
+
+  {% for rev in recent_reviews %}
+    <h3><a href="/books/{{rev['id']}}">{{rev['title']}}</a></h3>
+    <p>Rating: {{rev['rating']}} stars</p>
+    <p><a href="/users/{{rev['user_id']}}">{{rev['name']}} </a>says:  {{rev['review']}}</p>
+    <p>Posted on: {{rev['created_at']}}</p>
+
+  {% endfor %}
+{% endblock %}

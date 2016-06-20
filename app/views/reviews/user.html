@@ -1,0 +1,17 @@
+<!-- SHOW USER PAGE -->
+
+<!-- contains layout.html file -->
+{% extends "layout.html" %}
+{% block body %}
+<h4>User Alias: {{user_info['alias']}}</h4>
+<p>Name: {{user_info['name']}}</p>
+<p>Email: {{user_info['email']}}</p>
+<p>Total Reviews: {{total_reviews['total_reviews']}} </p>
+
+<p>Posted Reviews on the following books:</p>
+<ul>
+  {% for reviews in review_titles %}
+      <li><a href="/books/{{reviews['id']}}">{{reviews['title']}}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}
